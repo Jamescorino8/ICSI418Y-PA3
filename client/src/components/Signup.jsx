@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-function Signup() {
+// onSignup: called after a new user is created so the user dropdowns refresh
+function Signup({ onSignup }) {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [username, setUsername] = useState("");
@@ -29,6 +30,7 @@ function Signup() {
             const data = await response.json();
             if (response.ok) {
                 setMessage(data.message);
+                onSignup();
             } else {
                 setMessage(data.message);
             }
